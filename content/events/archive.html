@@ -1,4 +1,10 @@
 title: VHP4Safety Archive
 dynamic: yes
+script: /static/js/timeline.js
 ---
+<div class="timeline-layout">
+<nav class="timeline" aria-label="Archive timeline"></nav>
+<div class="timeline-content">
 {{ cards("events", when="past") }}
+</div>
+</div>

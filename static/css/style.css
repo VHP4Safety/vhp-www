@@ -114,3 +114,21 @@ blockquote { margin: 16px 0; padding-left: 16px; border-left: 3px solid var(--te
 .narrow { padding-top: 40px; }
 .body img { max-height: 75vh; width: auto; }
 .body .gallery img { max-height: none; width: 100%; }
+
+/* archive: sticky year bar on the left */
+.timeline-layout { display: flex; gap: 24px; align-items: flex-start; }
+.timeline-content { flex: 1; min-width: 0; }
+.timeline { position: sticky; top: 16px; display: flex; flex-direction: column; border-left: 2px solid #d5d5d5; }
+.timeline a { position: relative; display: flex; gap: 8px; align-items: baseline; padding: 6px 12px 6px 16px; color: var(--muted); text-decoration: none; font-weight: 700; }
+.timeline a::before { content: ""; position: absolute; left: -7px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: #d5d5d5; border: 2px solid var(--bg); }
+.timeline a small { font-weight: 400; font-size: 11px; }
+.timeline a:hover, .timeline a.active { color: var(--purple); }
+.timeline a.active::before { background: var(--teal); }
+.timeline-year { margin: 24px 0 12px; color: var(--purple); scroll-margin-top: 16px; }
+.timeline-year:first-child { margin-top: 0; }
+@media (max-width: 640px) {
+  .timeline-layout { flex-direction: column; }
+  .timeline { position: static; flex-direction: row; flex-wrap: wrap; border-left: 0; gap: 4px 12px; }
+  .timeline a { padding: 2px 0; }
+  .timeline a::before { display: none; }
+}

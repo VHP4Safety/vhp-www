@@ -1,7 +1,7 @@
 # VHP4Safety website
 
 A static copy of the VHP4Safety pages from Sciencrew, built with Flask and published on GitHub Pages.
-The Sciencrew menu is replaced by a simple top menu. Every page is one plain HTML file; styling is in one CSS file; there is no JavaScript.
+The Sciencrew menu is replaced by a simple top menu. Every page is one plain HTML file; styling is in one CSS file; there is almost no JavaScript (only `static/js/timeline.js`, the year bar on the archive page; enable it on a page with a `script:` header field).
 
 ## Quick start
 
