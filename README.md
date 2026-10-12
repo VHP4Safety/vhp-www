@@ -21,6 +21,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | Colours, tile and card layout | `static/css/style.css` (colours are variables at the top) |
 | Images | `static/img/` |
 | Social feed posts | `content/_social/*.html` (folders and files starting with `_` are data, not pages) |
+| Update the social feed | `python3 tools/update_social.py`, then rebuild |
 
 ## Editing a page
 
