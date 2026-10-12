@@ -1,0 +1,18 @@
+<aside class="feed{{ ' feed-full' if full }}">
+  {% if not full %}<h2>VHP4Safety social feed</h2>{% endif %}
+  {% for i in items %}
+  {% if full %}
+  <div class="post">
+    <div class="post-meta"><span>{{ i.source }}</span><span>{{ i.date }}</span></div>
+    {{ i.text }}
+    {% if i.url %}<p><a href="{{ i.url }}">View on LinkedIn</a></p>{% endif %}
+  </div>
+  {% else %}
+  <a class="post" href="{{ i.url }}">
+    <div class="post-meta"><span>{{ i.source }}</span><span>{{ i.date }}</span></div>
+    {{ i.text }}
+  </a>
+  {% endif %}
+  {% endfor %}
+  {% if not full %}<a class="btn" href="/social/">Read more</a>{% endif %}
+</aside>
