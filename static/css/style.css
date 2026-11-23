@@ -73,7 +73,7 @@ h2, h3, h4 { color: var(--purple); }
 .feed h2 { color: #fff; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 8px; }
 .feed .post { display: block; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.25); color: #fff; text-decoration: none; }
 .feed .post p { margin: 0; font-weight: 700; }
-.feed .post:hover p { text-decoration: underline; }
+.feed a.post:hover p { text-decoration: underline; }
 .post-meta { display: flex; justify-content: space-between; font-size: 11px; opacity: 0.75; margin-bottom: 6px; }
 .btn { display: block; margin-top: 8px; padding: 10px; background: #fff; color: var(--teal); text-align: center; text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: var(--radius); }
 .feed-full { background: none; color: inherit; padding: 0; max-width: 760px; }
