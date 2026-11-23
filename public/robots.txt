@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vhp4safety.nl/sitemap_index.xml

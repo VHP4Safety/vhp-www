@@ -22,7 +22,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | Images | `static/img/` |
 | Social feed posts | `content/_social/*.html` (folders and files starting with `_` are data, not pages) |
 | Update the social feed | `python3 tools/update_social.py`, then rebuild |
-| Files at the site root (`sitemap_index.xml`, search-engine verification files) | `public/` (copied as they are) |
+| Files at the site root (`robots.txt`, `sitemap_index.xml`, search-engine verification files) | `public/` (copied as they are) |
 | `/sitemap.xml` | generated from all pages; the domain comes from `CNAME` |
 
 ## Editing a page
