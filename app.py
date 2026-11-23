@@ -13,11 +13,12 @@ import re
 from datetime import date, datetime
 from pathlib import Path
 
-from flask import Flask, abort, render_template, render_template_string, request
+from flask import Flask, abort, render_template, render_template_string, request, send_from_directory
 from markupsafe import Markup, escape
 
 ROOT = Path(__file__).resolve().parent
 CONTENT = ROOT / "content"
+PUBLIC = ROOT / "public"  # files published as-is at the site root (sitemap_index.xml, ...)
 
 SITE_NAME = "VHP4Safety"
 SITE_TAGLINE = "Towards safety assessment based on human data"
@@ -158,6 +159,31 @@ def page(path):
     return render_template("layout.html", page=match, body=Markup(body), layout=layout, fmt_date=fmt_date)
 
 
+def site_url():
+    """Public address of the site, taken from CNAME in the repository root."""
+    cname = ROOT / "CNAME"
+    host = cname.read_text(encoding="utf-8").strip() if cname.exists() else "localhost"
+    return f"https://{host}"
+
+
+@app.route("/sitemap.xml")
+def sitemap():
+    base = site_url()
+    urls = "".join(f"  <url><loc>{escape(base + p.url)}</loc></url>\n" for p in routed_pages())
+    xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n")
+    return app.response_class(xml, mimetype="application/xml")
+
+
+def public_file(name):
+    return send_from_directory(PUBLIC, name)
+
+
+PUBLIC_FILES = sorted(f.name for f in PUBLIC.iterdir() if f.is_file()) if PUBLIC.is_dir() else []
+for _name in PUBLIC_FILES:
+    app.add_url_rule("/" + _name, endpoint="public_file", view_func=public_file, defaults={"name": _name})
+
+
 @app.context_processor
 def site():
     return dict(site_name=SITE_NAME, tagline=SITE_TAGLINE, nav=NAV, request_path=request.path, today=date.today())
@@ -167,7 +193,7 @@ def site():
 def make_links_relative(response):
     """Turn "/static/x" and "/about/" into "../static/x" etc., so the site works from any base URL
     (such as https://<user>.github.io/<repo>/) without configuration."""
-    if response.mimetype == "text/html":
+    if response.mimetype == "text/html" and not response.direct_passthrough:
         depth = request.path.strip("/").count("/") + 1 if request.path.strip("/") else 0
         prefix = "../" * depth or "./"
         text = response.get_data(as_text=True)

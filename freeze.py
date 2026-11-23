@@ -9,7 +9,7 @@ from pathlib import Path
 
 from flask_frozen import Freezer
 
-from app import app, routed_pages
+from app import PUBLIC_FILES, app, routed_pages
 
 BUILD = Path(__file__).resolve().parent / "build"
 app.config["FREEZER_DESTINATION"] = str(BUILD)
@@ -21,6 +21,13 @@ freezer = Freezer(app)
 def page():
     for p in routed_pages():
         yield {"path": p.url.strip("/")}
+
+
+@freezer.register_generator
+def public_file():
+    for name in PUBLIC_FILES:
+        yield "public_file", {"name": name}
+
 
 
 if __name__ == "__main__":
