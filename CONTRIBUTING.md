@@ -47,7 +47,7 @@ If you prefer working on your own computer, see the [README](README.md) for a li
 | VHP4Safety consortium | [`content/about/consortium.html`](content/about/consortium.html) |
 | News & Events | [`content/news/`](content/news/) |
 | Upcoming Events, Archive | [`content/events/`](content/events/) |
-| Explore Our Work (platform, publications, videos) | [`content/explore/`](content/explore/) |
+| Explore Our Work (platform, publications, videos) | [`content/explore/`](content/explore/); the publications list is generated with `python3 tools/update_publications.py` from the [NWO project page](https://www.nwo.nl/en/projects/rzoqi84793), so add publications there rather than by hand |
 | Contact | [`content/contact.html`](content/contact.html) |
 | Social feed | [`content/social.html`](content/social.html), posts in [`content/_social/`](content/_social/) |
 
