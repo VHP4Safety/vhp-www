@@ -21,7 +21,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 | Colours, tile and card layout | `static/css/style.css` (colours are variables at the top) |
 | Images | `static/img/` |
 | Social feed posts | `content/_social/*.html` (folders and files starting with `_` are data, not pages) |
-| Update the social feed | `python3 tools/update_social.py`, then rebuild |
+| Update the social feed | save posts as `.mhtml` in `linkedin/` (ignored by git), run `python3 tools/update_social.py`; see [ADDING_LINKEDIN_POSTS.md](ADDING_LINKEDIN_POSTS.md) |
 | Files at the site root (`robots.txt`, `sitemap_index.xml`, search-engine verification files) | `public/` (copied as they are) |
 | `/sitemap.xml` | generated from all pages; the domain comes from `CNAME` |
 

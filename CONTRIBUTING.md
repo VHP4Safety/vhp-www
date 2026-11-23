@@ -31,6 +31,7 @@ If you prefer working on your own computer, see the [README](README.md) for a li
 | --- | --- |
 | Add a news item to [News & Events](https://www.vhp4safety.nl/news/) | [ADDING_NEWS.md](ADDING_NEWS.md) |
 | Add an event to [Upcoming Events](https://www.vhp4safety.nl/events/) (and later the [Archive](https://www.vhp4safety.nl/events/archive/)) | [ADDING_EVENTS.md](ADDING_EVENTS.md) |
+| Add LinkedIn posts to the [social feed](https://www.vhp4safety.nl/social/) | [ADDING_LINKEDIN_POSTS.md](ADDING_LINKEDIN_POSTS.md) |
 | Change the home page | [below](#editing-the-landing-page) |
 | Change another page (About, Partners, Research Lines, Contact, ...) | edit its file in `content/`, see the table below |
 
@@ -104,17 +105,7 @@ Which folders are included and how many items are shown is set in `content/index
 ### Social feed
 
 The column next to the spotlight shows the five newest LinkedIn posts, which are stored as files in `content/_social/`.
-To add a post by hand, create a file such as `content/_social/2026-11-23-my-post.html`:
-
-```html
-date: 2026-11-23
-source: LinkedIn VHP
-url: https://www.linkedin.com/feed/update/urn:li:share:.../
----
-<p>Text of the post.</p>
-```
-
-As long as the posts are still collected on Sciencrew, `python3 tools/update_social.py` (run on your own computer) adds the new ones automatically; commit the new files afterwards.
+To add new posts, save them from LinkedIn and import them with `tools/update_social.py`, as described in [ADDING_LINKEDIN_POSTS.md](ADDING_LINKEDIN_POSTS.md).
 To show more or fewer posts, change the number in `{{ social(5) }}` in `content/index.html`.
 
 ### Text under the banner
